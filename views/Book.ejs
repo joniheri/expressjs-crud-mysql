@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book</title>
+
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <!-- EndBootstrap -->
+  </head>
+  <body>
+    <div class="container-fluid" style="margin-top: 20px">
+      <h1 style="text-align: center; background: #e9e9e9">
+        This Is Book Page with .ejs file
+      </h1>
+      <table class="table table-striped">
+        <thead style="background: #1e8bf0">
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Judul Buku</th>
+            <th scope="col">Tahun Terbit</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data.length){ let no =0; for(let i = 0; i< data.length; i++){
+          no++; %>
+          <tr>
+            <td><%= no %></td>
+            <td><%= data[i].judulBuku%></td>
+            <td><%= data[i].tahunTerbit%></td>
+            <td><%= data[i].harga%></td>
+            <td>
+              <a href="/edit/<%= data[i].id%>" class="btn btn-secondary btn-sm"
+                >Edit</a
+              >
+              <a href="/delete/<%= data[i].id%>" class="btn btn-danger btn-sm"
+                >Delete</a
+              >
+            </td>
+          </tr>
+          <% } } %>
+        </tbody>
+      </table>
+
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Add Data
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Book</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <Form>
+                <div class="input-group flex-nowrap input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Judul Buku"
+                    aria-label="Judul Buku"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+                <div class="input-group flex-nowrap input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tahun Terbit"
+                    aria-label="Tahun Terbit"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+                <div class="input-group flex-nowrap input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">*</span>
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Harga"
+                    aria-label="Harga"
+                    aria-describedby="addon-wrapping"
+                  />
+                </div>
+              </Form>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- EndModal -->
+    </div>
+  </body>
+</html>
